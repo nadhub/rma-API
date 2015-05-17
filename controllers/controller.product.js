@@ -10,7 +10,6 @@ var productController = function(Product){
     var post = function(req, res){
 
         var product = new Product(req.body);
-        console.log(product);
         product.save();
         res.status(201);
         res.send(product);

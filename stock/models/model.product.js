@@ -19,7 +19,6 @@ var productShcema = new Schema({
                 marque: String,
                 serialNumber: [String]
               }
-
 })
 
 module.exports = mongoose.model('Product', productShcema);

@@ -3,6 +3,7 @@
  */
 
 "use strict";
+var _ = require('lodash');
 
 
 var productController = function(Product){
@@ -42,14 +43,7 @@ var productController = function(Product){
 
     var update = function(req, res){
 
-        req.product.productName = req.body.name;
-        req.product.productCode = req.body.productCode;
-        req.product.category = req.body.category;
-        req.product.imgUrl = req.body.imgUrl;
-        req.product.qty = req.body.qty;
-        req.product.price = req.body.price;
-        req.product.pricePublic = req.body.pricePublic;
-        req.product.details = req.body.details;
+        _.merge(req.product, req.body);
 
        req.product.save(function(err){
            if (err)

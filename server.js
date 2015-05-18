@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var db = mongoose.connect('mongodb://localhost/RMA');
-var Product = require('./models/model.product');
+var Product = require('./stock/models/model.product');
 
 
-productRouter = require('./routes/product')(Product);
+productRouter = require('./stock/routes/route.product')(Product);
 app.use('/api/products', productRouter);
 
 

@@ -2,7 +2,8 @@
  * Created by nad on 16/05/15.
  */
 
-var express = require('express');
+var express = require('express'),
+    multer = require('multer');
 
 
 
@@ -11,11 +12,20 @@ var routeProduct = function(Product){
     var controller = require('../controllers/controller.product')(Product);
     var routes = express.Router();
 
+    routes.use('/', multer({
+        dest: '../upload/images',
+        limits : {
+            files: 2,
+            fieldSize: 5
+        }
+
+    }));
+
     routes.route('/')
         .post(controller.post)
         .get(controller.get);
 
-        routes.use('/:prodId', function(req, res, next){
+    routes.use('/:prodId', function(req, res, next){
 
         var id = req.params.prodId;
         Product.findById(id, function(err, product){

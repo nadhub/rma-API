@@ -2,8 +2,8 @@
  * Created by nad on 16/05/15.
  */
 
-var express = require('express'),
-    app = express(),
+const express = require('express');
+var app = express(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
@@ -17,9 +17,8 @@ var db = mongoose.connect('mongodb://localhost/RMA');
 var Product = require('./models/model.product');
 
 
-
 productRouter = require('./routes/product')(Product);
-app.use('/api', productRouter);
+app.use('/api/products', productRouter);
 
 
 app.listen(port, function(){

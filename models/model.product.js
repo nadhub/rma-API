@@ -10,11 +10,15 @@ var productShcema = new Schema({
 
     productName: {type: String},
     productCode: {type: String},
+    category: {type: String},
     imgUrl: {type: String},
     qty: {type: Number, default: 0},
     price : {type: Number, default: 0},
     pricePublic: {type: Number, default: 0},
-    serialNumber: [String]
+    details : {
+                marque: String,
+                serialNumber: [String]
+              }
 
 })
 

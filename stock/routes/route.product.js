@@ -7,13 +7,13 @@ var express = require('express'),
 
 
 
-var routeProduct = function(Product){
+var routeProduct = function(Product, socket){
 
     var controller = require('../controllers/controller.product')(Product);
     var routes = express.Router();
 
     routes.use('/', multer({
-        dest: '../upload/images',
+        dest: '../assets/images',
         limits : {
             files: 2,
             fieldSize: 5
@@ -24,6 +24,9 @@ var routeProduct = function(Product){
     routes.route('/')
         .post(controller.post)
         .get(controller.get);
+
+    routes.route('/upload')
+        .post(controller.upload);
 
     routes.use('/:prodId', function(req, res, next){
 

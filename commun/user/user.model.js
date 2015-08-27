@@ -31,5 +31,13 @@ userSchema.pre('save', function(next){
 
 })
 
+userSchema.methods.userWithOutPW = function(user){
+    var a = {
+        name: user.name,
+        role: user.roles
+    }
+    return a;
+}
+
 
 module.exports = mongoose.model('User', userSchema);

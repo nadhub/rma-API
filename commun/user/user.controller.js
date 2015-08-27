@@ -8,9 +8,11 @@ var userController = function(User){
     var post = function(req, res){
 
         var user = new User(req.body);
-        user.save();
-        res.status(201);
-        res.send(user);
+        user.save(function(err, data){
+            if(err) res.status(301).json(err);
+            var userToSend = user.userWithOutPW(data)
+            res.json(userToSend);
+        });
     }
 
     var get = function(req, res){

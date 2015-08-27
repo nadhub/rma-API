@@ -3,6 +3,7 @@
  */
 
 var express = require('express');
+var passport = require('passport');
 
 var userRouter = function(User){
 
@@ -14,6 +15,13 @@ var userRouter = function(User){
             .post(controller.post)
             .get(controller.get);
 
+        /*router.route('/login')
+            .post(function(req, res){
+                passport('basic', {session: false}, function(){
+                    res.json(user);
+                });
+            })
+*/
 
     return router;
 

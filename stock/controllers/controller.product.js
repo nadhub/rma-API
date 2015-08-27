@@ -11,9 +11,16 @@ var productController = function(Product){
     var post = function(req, res){
 
         var product = new Product(req.body);
-        product.save();
-        res.status(201);
-        res.send(product);
+
+        product.save(function(err, product){
+            if(!err){
+                res.status(201);
+                res.send(product);
+            }
+
+        });
+
+
     }
 
     var get = function(req, res){
@@ -78,6 +85,12 @@ var productController = function(Product){
     }
 
 
+    var upload = function(req, res){
+
+
+    };
+
+
     return {
 
         post: post,
@@ -85,7 +98,8 @@ var productController = function(Product){
         getOne: getOne,
         update: update,
         patch: patch,
-        delete: delProduct
+        delete: delProduct,
+        upload: upload
     }
 
 }

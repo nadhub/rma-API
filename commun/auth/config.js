@@ -5,7 +5,8 @@
 var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy,
     bcrypt = require('bcrypt-nodejs'),
-    userService = require('../services/userService')();
+    jwt = require('jsonwebtoken'),
+    key = 'la cle public .pem ici';
 
 var User = require('../user/user.model');
 
@@ -18,17 +19,22 @@ module.exports = function(){
                 User.findOne({ name: name }, function(err, user) {
                     if (err) { return done(err); }
 
-                    if(!user){return done(null, 'Le login / password incorrect')}
+                    if(!user){return done(null, false, {message: 'Le login / password incorrect'})}
 
                     bcrypt.compare(password, user.password, function(err, same){
 
                         if(err){return done(err)}
-                        if(!same){return done(null, 'Le login / password incorrect')}
-                        var newUser = user.userWithOutPW(user)
+                        if(!same){return done(null, false, {message: 'Le login / password incorrect'})}
+
+                        var newUser = createJWT(user.userWithOutPW(user));
                         done(null, newUser)
 
                     });
                 });
         }));
 
+}
+
+function createJWT(user){
+    return jwt.sign(user, key, {expiresInMinutes: 60*5})
 }

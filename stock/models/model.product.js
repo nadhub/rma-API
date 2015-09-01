@@ -21,7 +21,7 @@ var productShcema = new Schema({
     stock: {type: Number, default: 0},
     price : {type: Number, default: 0},
     pricePublic: {type: Number, default: 0},
-    details : [details]
+    details : []
 })
 
 productShcema.pre('save', function(next){

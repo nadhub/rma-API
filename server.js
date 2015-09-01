@@ -30,7 +30,7 @@ require('./commun/auth/config')();
 var Product = require('./stock/models/model.product');
 var User = require('./commun/user/user.model');
 
-require('./commun/DB/config')(mongoose, Product);
+require('./commun/DB/config')(mongoose, Product, User);
 
 
 productRouter = require('./stock/routes/route.product')(Product);

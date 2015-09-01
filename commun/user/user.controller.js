@@ -1,7 +1,9 @@
 /**
  * Created by nadir on 02/06/15.
  */
-"use strict";
+
+var _ = require('lodash'),
+    jwt = require('jsonwebtoken');
 
 var userController = function(User){
 
@@ -22,6 +24,7 @@ var userController = function(User){
             res.status(200).json(users);
         })
     }
+
 
 
     return {

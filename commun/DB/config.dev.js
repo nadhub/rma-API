@@ -25,7 +25,6 @@ module.exports = function(mongoose, Product,User) {
         for(var i=0; i< products.length; i++){
             new Product(products[i]).save(function(err, data){
                 if(err)console.log(err)
-                console.log(data)
             });
         }
 

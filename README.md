@@ -1,7 +1,7 @@
 ## API Restful  
 Api Rest (json) utilisant :
 
-- Node.js avec le framework Epress
+- Node.js avec le framework Express
 - Mongodb (mongoose) pour la persistence des données
 - passport.js et JWT (json web token) pour l'authentification
 - socket.io pour le websocket

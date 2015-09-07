@@ -8,7 +8,7 @@ Api Rest (json) utilisant :
 
 ## Installation pour test
 
-Declarer d'abord une variable d'environnement TARGET
+Declarer d'abord une variable d'environnement TARGET Optional
 ```
 Sous Linux: export TARGET=dev
 ```
@@ -26,6 +26,6 @@ npm install
 ``` 
 lancer l'application 
 ```
-gulp
+npm start
 ```
 

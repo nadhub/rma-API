@@ -16,7 +16,10 @@ module.exports = function(mongoose, Product,User) {
         {productName: 'Graphic card', productCode:'TPN:006',category:'Component', stock:'20', price: 320, imgUrl:'public/assets/hdd1To.jpg'}
     ];
 
-    var user = {name: 'adm', password: 'adm', roles: ['admin']};
+    var users = [
+                {name: 'adm', password: 'adm', roles: ['admin']},
+                {name: 'user', password: 'user', roles: ['user']}
+                ];
 
     var db = mongoose.connect('mongodb://localhost/RMA', function(){
         console.log('Connection to DB Ok ' )
@@ -28,7 +31,10 @@ module.exports = function(mongoose, Product,User) {
             });
         }
 
-        new User(user).save();
+        for(var i=0; i<users.length; i++){
+            new User(users[i]).save();
+        }
+
     });
 
 }

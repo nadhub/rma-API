@@ -4,7 +4,7 @@
   "description": "app for RMA and Stock",
   "main": "server.js",
   "scripts": {
-    "start": "TARGET='dev' node server.js"
+    "start": "TARGET='dev' gulp"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "lodash": "^3.10.1",
     "mongoose": "^4.0.3",
     "multer": "^0.1.8",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^1.3.6"
   },
   "devDependencies": {
